@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello Love</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    @font-face {
+      font-family: clipneon;
+      src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/clip.ttf);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: black;
+      font-family: clipneon;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    #container {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    #congratsText {
+      font-size: 8vw;
+      color: #A9DFFF;
+      text-shadow: 0 0 1vw #16A9FA, 0 0 3vw #009CFF;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+      margin-bottom: 3vh;
+    }
+
+    #neonHeart {
+      font-size: 10vw;
+      color: #FBB4FF;
+      text-shadow: 0 0 1vw #CB16FA, 0 0 3vw #E82FF5;
+      cursor: pointer;
+      display: none;
+    }
+
+    .sign-two {
+      font-size: 10vw;
+      line-height: 1.2;
+      color: #A9DFFF;
+      text-shadow: 0 0 .25vw #A9DFFF, 0 0 .8vw #009CFF, 0 0 10vw #16A9FA;
+      display: none;
+      opacity: 0;
+      transition: opacity 2s ease;
+    }
+
+    .off {
+      color: #4A6F90;
+      display: inline-block;
+      text-shadow: 0 0 0.8vw #184D8A, 0 0 2vw #186CFA;
+    }
+
+    .fa-heart-o {
+      color: #FBB4FF;
+      text-shadow: 0 0 0.8vw #E82FF5, 0 0 10vw #CB16FA;
+    }
+
+    .heart-off {
+      animation: heart 1s ease infinite;
+    }
+
+    @keyframes heart {
+      0%, 100% {
+        color: #FBB4FF;
+        text-shadow: 0 0 1vw #CB16FA, 0 0 3vw #E82FF5;
+      }
+      50% {
+        color: #8F5493;
+        text-shadow: 0 0 1vw #59125E, 0 0 3vw #42114E;
+      }
+    }
+
+    .love-note {
+      margin-top: 4vh;
+      display: none;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 2s ease;
+      padding: 2vw;
+    }
+
+    .note-paper {
+      background: #fffaf7;
+      border: 2px dashed #ff99c8;
+      padding: 4vw;
+      max-width: 80vw;
+      font-size: 4.2vw;
+      color: #b72865;
+      text-shadow: 0 0 0.5vw #ff8ed8;
+      border-radius: 12px;
+      box-shadow: 0 0 30px #ffc6e9;
+      font-family: 'Dancing Script', cursive;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      max-height: 60vh;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #ff99c8 #fffaf7;
+    }
+
+    .note-paper::-webkit-scrollbar {
+      width: 8px;
+    }
+    .note-paper::-webkit-scrollbar-track {
+      background: #fffaf7;
+    }
+    .note-paper::-webkit-scrollbar-thumb {
+      background: #ff99c8;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 500px) {
+      .note-paper {
+        font-size: 6vw;
+        padding: 5vw;
+      }
+
+      .sign-two {
+        font-size: 14vw;
+      }
+
+      #congratsText {
+        font-size: 10vw;
+      }
+
+      #neonHeart {
+        font-size: 18vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="fireCanvas"></canvas>
+
+  <div id="container">
+    <div id="congratsText">CONGRATULATIONS <br>LOVE</div>
+    <i class="fa fa-heart-o" id="neonHeart"></i>
+
+    <div class="sign-two" id="heartMessage">
+      <i class="fa fa-heart-o" aria-hidden="true"></i>
+      <div class="off">I</div> LOVE <br>
+      <i class="fa fa-heart-o" aria-hidden="true"></i>
+      YO<div class="off">U</div><br>
+      <i class="fa fa-heart-o heart-off" aria-hidden="true"></i>
+      ANGELO<br>
+    </div>
+
+<div id="loveNote" class="love-note">
+  <div class="note-paper">
+    <p>
+Hello, Love,  
+First of all CONGRATULATIONS!!! Graduate ka na hehe 🎓  
+I'm so proud of you. Kahit saglit pa lang kitang nakilala at nakasama,  
+I’m already so proud of everything you’ve done.
+
+Proud ako sa mga efforts mo, how you never gave up on your problems,  
+and how you handled all the stress in life. Na-amaze ako how you pulled off your thesis—alone.
+
+You’re very attractive, lalo na kapag busy ka magbasa ng news sa phone 😂😂😂  
+Wag masyadong harsh sa sarili—remember, you’re a complete package.  
+You’re pogi, matalino, mabait, matulungin... lahat-lahat na! Hahaha.  
+Hindi mo lang napapansin, pero perfect ka po. :*
+
+I thank God kasi tinupad Niya prayers ko.  
+Imagine—nasa Outlaw pala yung magiging asawa ko ❤️  
+Thankful ako sa pag-claim mo ng booster car, kahit puro epic fail pa 😆
+<img src="love.png" style="max-width: 90%; border-radius: 10px; margin-top: 10px; box-shadow: 0 0 20px #ff99c8;" />
+
+
+Dahil dun, nagkakilala tayo. Kaya pala hindi nawala sa garage ko yung car mo—  
+kasi pati yun, na-attach na rin ako. Normally, umaalis agad ako after duty,  
+pero ewan ko, something made me stay. Then you started telling me about your PD plans.
+
+Yes, nagkahiwalay tayo for a while,  
+pero biglang nagkita ulit sa mall—tapos nagpabuhat ka pa sakin 😳  
+Weird, kasi I never do that to anyone...  
+but with you, I did. Nagpabuhat din ako sayo nun ha! Hahaha, harot!
+
+Nagkahiwalay ulit tayo, nawala communication,  
+pero weird—gumawa ulit si Lord ng way para mag-usap tayo.  
+I love you so much. ❤️
+
+I may not be your first lovey, but I promise to be your last.  
+I’m willing to let my guard down for you.  
+I want to know you more deeply. I want a future with you.  
+I’m willing to wait—for you.  
+
+Lagi mong tandaan: andito lang ako, always supporting you. ❤️  
+Tutulungan kita through ups and downs, lovey.  
+I’ll love every version of you.  
+At kapag napagod, pahinga lang—then laban ulit.  
+Thank you for being the reason I smile.
+
+Sending you good vibes and positive energy for your post-graduation life, lovey.  
+Good luck! ❤️  
+Ay-ayaten ka!!!
+
+
+
+❤️  
+    </p>
+  </div>
+</div>
+
+
+  <script>
+    const canvas = document.getElementById("fireCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let fireY = canvas.height;
+    const fireX = canvas.width / 2;
+    const targetY = canvas.height / 2.5;
+    let exploded = false;
+    const particles = [];
+
+    class Particle {
+      constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.radius = Math.random() * 2 + 1;
+        this.speedX = (Math.random() - 0.5) * 8;
+        this.speedY = (Math.random() - 0.5) * 8;
+        this.color = color;
+        this.alpha = 1;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.alpha -= 0.015;
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.shadowColor = this.color;
+        ctx.shadowBlur = 15;
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function createExplosion(x, y) {
+      const colors = ["#16A9FA", "#FF61C7", "#A9DFFF", "#E82FF5", "#FFFA8B"];
+      for (let i = 0; i < 80; i++) {
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        particles.push(new Particle(x, y, color));
+      }
+    }
+
+    function animate() {
+      ctx.fillStyle = "rgba(0,0,0,0.2)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      if (!exploded) {
+        ctx.beginPath();
+        ctx.arc(fireX, fireY, 5, 0, Math.PI * 2);
+        ctx.fillStyle = "#fff";
+        ctx.shadowColor = "#fff";
+        ctx.shadowBlur = 20;
+        ctx.fill();
+        fireY -= 12;
+
+        if (fireY <= targetY) {
+          exploded = true;
+          createExplosion(fireX, targetY);
+          setTimeout(() => {
+            document.getElementById("congratsText").style.opacity = 1;
+          }, 800);
+
+          setTimeout(() => {
+            document.getElementById("congratsText").style.display = "none";
+            document.getElementById("neonHeart").style.display = "block";
+          }, 5500);
+        }
+      }
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        particles[i].update();
+        particles[i].draw();
+        if (particles[i].alpha <= 0) {
+          particles.splice(i, 1);
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    document.getElementById("neonHeart").addEventListener("click", () => {
+      canvas.style.display = "none";
+      document.getElementById("neonHeart").style.display = "none";
+
+      const heartMessage = document.getElementById("heartMessage");
+      const loveNote = document.getElementById("loveNote");
+
+      heartMessage.style.display = "block";
+
+      setTimeout(() => {
+        heartMessage.style.opacity = 1;
+
+        setTimeout(() => {
+          heartMessage.style.opacity = 0;
+
+          setTimeout(() => {
+            heartMessage.style.display = "none";
+            loveNote.style.display = "flex";
+            setTimeout(() => {
+              loveNote.style.opacity = 1;
+            }, 100);
+          }, 2000);
+        }, 3000);
+      }, 100);
+    });
+
+    window.addEventListener("load", animate);
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    window.addEventListener('click', () => {
+    const audio = document.getElementById("bgMusic");
+    if (audio && audio.paused) {
+      audio.play().catch(e => {
+        console.log("Autoplay blocked:", e);
+      });
+    }
+  }, { once: true });
+
+
+  </script>
+
+  <audio id="bgMusic" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+</body>
+</html>
